@@ -2,23 +2,24 @@
 import { ref, onMounted } from 'vue'
 import { supabase } from './lib/supabaseClient'
 
-const cust = ref([])
+const custdata = ref([])
 
-async function getcust() {
-
-  let { data: custom, error } = await supabase
+async function getcustdata() {
+  const { data } = await supabase
   .from('custom')
-  .select('*')
-  cust.value = data["custom"]
+  .select()
+  custdata.value = data
 }
 
 onMounted(() => {
-  getcust()
+  getcustdata()
+  console.log(custdata.value)
 })
 </script>
 
 <template>
+  <p>dupa dupa</p>
   <ul>
-    <li v-for="c in cust" :key="c.id">{{ c.details }}</li>
+    <li v-for="cus in custdata" :key="cus.id">{{ cus.details }}</li>
   </ul>
 </template>
