@@ -20,7 +20,7 @@ async function getProfile() {
     const { user } = session.value
 
     const { data, error, status } = await supabase
-      .from('profiles')
+      .from('users')
       .select(`username, website, avatar_url`)
       .eq('id', user.id)
       .single()
@@ -52,7 +52,7 @@ async function updateProfile() {
       updated_at: new Date(),
     }
 
-    const { error } = await supabase.from('profiles').upsert(updates)
+    const { error } = await supabase.from('users').upsert(updates)
 
     if (error) throw error
   } catch (error) {
