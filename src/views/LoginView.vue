@@ -20,12 +20,13 @@
 		<button @click="login"> Login </button>
 		<button @click="seeUser"> See user </button>
 		<button @click="logout"> Logout </button>
+		<button @click="login_google"> Login with google </button>
 	</div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { supabase } from '../lib/supabaseClient'
+import { supabase } from '../lib/supabaseClient';
 
 let email = ref("");
 let password = ref("");
@@ -56,6 +57,21 @@ async function login() {
 	const { data, error } = await supabase.auth.signInWithPassword({
 		email: email.value,
 		password: password.value
+	})
+	if (error)
+	{
+		console.log(error);
+	}
+	else
+	{
+		console.log(data);
+	}
+}
+
+async function login_google() {
+	console.log("google login")
+	const { data, error } = await supabase.auth.signInWithOAuth({
+  		provider: 'google',
 	})
 	if (error)
 	{
