@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import UnauthorizedView from '../views/UnauthorizedView.vue'
-import SecretView from '../views/SecretView.vue'
+import AccountView from '../views/AccountView.vue'
 
 import { supabase } from '../lib/supabaseClient'
 
@@ -17,9 +17,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/secret',
-      name: 'secret',
-      component: SecretView,
+      path: '/account',
+      name: 'account',
+      component: AccountView,
 	  meta: { requiresAuth: true }
     },
 	{
