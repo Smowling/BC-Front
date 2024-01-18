@@ -30,11 +30,6 @@
   import { onMounted, ref, toRefs } from "vue";
   
 
-  const session = ref();
-
-  getSession();  
-    
-
   const brand = ref('');
   const model = ref('');
   const year = ref('');
@@ -48,10 +43,6 @@
     if (error) {
       console.log(error)
     }
-  }
-
-  async function getSession() {
-      session.value = await supabase.auth.getSession();
   }
 
 
