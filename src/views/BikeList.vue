@@ -1,7 +1,10 @@
 <template>
     <div class="blikeList">
         <ul>
-            <li v-for="(bike, index) in bikes" :key="index"> {{ bike.brand }} {{ bike.model }} {{ bike.year.slice(0, 4) }}</li>
+            <li v-for="(bike, index) in bikes" :key="index"
+            > {{ bike.brand }} {{ bike.model }} {{ bike.year.slice(0, 4) }}
+            <button @click="deleteBike(bike.id)">X</button>
+            </li>
         </ul>
     </div>
 
@@ -10,7 +13,7 @@
 <script setup>
 
 import { supabase } from '../lib/supabaseClient';
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const bikes = ref();
 
@@ -22,6 +25,14 @@ async function getBikes() {
     else bikes.value = dbData;
   }
 
+  async function deleteBike(bikeid) {
+    const { error } = await supabase
+  .from('bikes')
+  .delete()
+  .eq('id', bikeid)
+  if (error) console.log("Error", error);
+  getBikes();
+  }
 
 
 </script>
