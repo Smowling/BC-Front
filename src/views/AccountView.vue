@@ -1,8 +1,7 @@
 <template>
     <div class="about">
       <h1>This is protected content</h1>
-      <p id="account"> Account: {{  account.data.session.user.email  }}</p>
-      <p> Protect the secret password: **TMX$$ </p>
+
     </div>
 
     <div id="bikeform">
@@ -27,36 +26,35 @@
   </template>
   
   <script setup>
-  import { supabase } from '../lib/supabaseClient'
-  import { ref } from "vue";
+  import { supabase } from '../lib/supabaseClient';
+  import { onMounted, ref, toRefs } from "vue";
   
-  
-  const account = ref();
-  getSession();
+
+  const session = ref();
+
+  getSession();  
+    
+
   const brand = ref('');
   const model = ref('');
   const year = ref('');
   
   async function saveBike() {
-    const payload = {
-      "brand": brand,
-      "model": model,
-      "year": year,
-    }
+    const { data: { user } } = await supabase.auth.getUser()
     const { error } = await supabase
       .from('bikes')
-      .insert({ brand: brand.value, model: model.value, year: year.value })
+      .insert({ brand: brand.value, model: model.value, year: year.value, user_id: user.id })
 
-      if (error) {
-        console.log(error)
-      }
-
+    if (error) {
+      console.log(error)
+    }
   }
 
   async function getSession() {
-      account.value = await supabase.auth.getSession();
-      console.log(account.data.session.user.email)
+      session.value = await supabase.auth.getSession();
   }
+
+
   </script>
   
   <style>
