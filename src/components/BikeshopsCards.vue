@@ -16,9 +16,6 @@ import { ref, onMounted } from "vue";
 
 const bikeshops = ref();
 
-onMounted(() => {
-    getBikeshops();
-})
 getBikeshops();
 
   async function getBikeshops() {
