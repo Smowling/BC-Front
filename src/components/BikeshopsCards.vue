@@ -1,9 +1,8 @@
 <template>
     <div class="bikeshops">
-        <div v-for="(bikestore, index) in bikestores" :key="index">
-          <p>test {{ index }}</p>
+        <div v-for="(bikestore, index) in bikeshops" :key="index">
             <p>{{ bikestore.name }}</p> 
-            <p>{{ bikestore.model }}</p>
+            <p>{{ bikestore.description }}</p>
         </div>
     </div>
 
