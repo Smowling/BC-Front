@@ -1,14 +1,14 @@
 <template>
-    <div class="bikelist">
-        <ul>
-            <li v-for="(bike, index) in bikes" :key="index"
-            > {{ bike.brand }} {{ bike.model }} {{ bike.year.slice(0, 4) }}
-            <button @click="deleteBike(bike.id)">X</button>
-            </li>
-        </ul>
-    </div>
+  <div class="bikelist">
+    <ul>
+      <li v-for="(bike, index) in bikes" :key="index"
+      > {{ bike.brand }} {{ bike.model }} {{ bike.year.slice(0, 4) }}
+      <button @click="deleteBike(bike.id)">X</button>
+      </li>
+    </ul>
+  </div>
 
-  </template>
+</template>
 
 <script setup>
 
