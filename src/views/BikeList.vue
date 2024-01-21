@@ -1,5 +1,6 @@
 <template>
-  <div class="bikelist">
+  <button @click="active = !active">Add</button>
+  <div v-if="active" class="bikelist">
     <ul>
       <li v-for="(bike, index) in bikes" :key="index"
       > {{ bike.brand }} {{ bike.model }} {{ bike.year.slice(0, 4) }}
@@ -7,6 +8,7 @@
       </li>
     </ul>
   </div>
+  <BikeForm v-else />
 
 </template>
 
@@ -14,8 +16,12 @@
 
 import { supabase } from '../lib/supabaseClient';
 import { ref } from "vue";
+import BikeForm from '../components/BikeForm.vue'
 
 const bikes = ref();
+const active = ref(true);
+
+
 
 getBikes();
 

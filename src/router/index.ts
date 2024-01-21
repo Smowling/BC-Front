@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { supabase } from '../lib/supabaseClient'
+
+
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import UnauthorizedView from '../views/UnauthorizedView.vue'
 import AccountView from '../views/AccountView.vue'
 import BikeList from '../views/BikeList.vue'
-
-import { supabase } from '../lib/supabaseClient'
 import BikeListVue from '@/views/BikeList.vue'
+
 
 let localUser;
 
