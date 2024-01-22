@@ -1,25 +1,11 @@
 <template>
-	<h1> Test Form </h1>
 	<div class="inputContainer">
 		<label for="email"> Email: </label>
 		<input type="email" id="email" v-model="email">
 	</div>
-
-	<div class="inputContainer">
-		<label for="email"> Password: </label>
-		<input type="password" id="password" v-model="password">
-	</div>
-
-	<div class="inputContainer">
-		<label for="firstName"> First Name </label>
-		<input type="firstName" id="firstName" v-model="firstName">
-	</div>
-
 	<div class="buttonContainer">
-		<button @click="createAccount"> Create </button>
 		<button @click="login"> Login </button>
-		<button @click="seeUser"> See user </button>
-		<button @click="logout"> Logout </button>
+		<Logout />
 		<button @click="login_google"> Login with google </button>
 	</div>
 </template>
@@ -27,6 +13,7 @@
 <script setup>
 import { ref } from "vue";
 import { supabase } from '../lib/supabaseClient';
+import Logout from '../components/Logout.vue'
 
 let email = ref("");
 let password = ref("");
@@ -88,16 +75,6 @@ async function seeUser() {
 	console.log(localUser.data.session)
 }
 
-async function logout() {
-	const { error } = await supabase.auth.signOut();
-
-	if (error) {
-		console.log(error);
-	}
-	else {
-		console.log("Sign out success")
-	}
-}
 </script>
 
 <style scoped>
