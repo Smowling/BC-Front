@@ -1,10 +1,15 @@
 <template>
   <div class="card" v-for="(bikestore, index) in bikeshops" :key="index">
+
+    <RouterLink :to="{ name: 'bikeshop', params: {name: bikestore.name, bikestore: bikestore.id}}">
+
     <div class="container">
       <p class="name">{{ bikestore.name }}</p> 
       <p class="desc">{{ bikestore.description }}</p>
     </div>
+  </RouterLink>
   </div>
+
 </template>
 
 
@@ -32,6 +37,9 @@
 
 
 <script setup>
+
+import { RouterLink } from 'vue-router'
+
 
 const props = defineProps(['bikeshops'])
 

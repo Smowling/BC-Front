@@ -7,8 +7,8 @@ import LoginView from '../views/LoginView.vue'
 import UnauthorizedView from '../views/UnauthorizedView.vue'
 import AccountView from '../views/AccountView.vue'
 import BikeList from '../views/BikeList.vue'
-import BikeListVue from '@/views/BikeList.vue'
-
+import BikeshopsCardsVue from '@/components/BikeshopsCards.vue'
+import BikeshopView from '@/views/BikeshopView.vue'
 
 let localUser;
 
@@ -35,6 +35,11 @@ const router = createRouter({
 		path: '/bikes',
 		name: 'bikes',
 		component: BikeList
+	},
+	{
+		path: '/b/:name',
+		name: 'bikeshop',
+		component: BikeshopView
 	},
 	{
 	  path: '/unauthorized',
