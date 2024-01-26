@@ -34,6 +34,7 @@ const router = createRouter({
 	{
 		path: '/bikes',
 		name: 'bikes',
+		meta: { requiresAuth: true },
 		component: BikeList
 	},
 	{
