@@ -1,6 +1,8 @@
 # bikecheck
 
-Bikecheck frontend with vue + supabase
+Bikecheck frontend with vite vue + supabase.
+Libs:
+vee-validate
 
 ## Recommended IDE Setup
 
