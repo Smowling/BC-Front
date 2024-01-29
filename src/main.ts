@@ -1,15 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import Vue from 'vue';
+// import Vue from 'vue';
 
-import helpers from './helpers.js';
+// import helpers from './helpers.js';
 
-Vue.mixin({
-  methods: {
-    ...helpers
-  }
-});
+// Vue.mixin({
+//   methods: {
+//     ...helpers
+//   }
+// });
 
 const app = createApp(App)
 

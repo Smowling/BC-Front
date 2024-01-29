@@ -1,11 +1,12 @@
 <template>
   <div class="card" v-for="(bikestore, index) in bikeshops" :key="index">
 
-    <RouterLink :to="{ name: 'bikeshop', params: {name: bikestore.name, bikestore: bikestore.id}}">
+    <RouterLink :to="{ name: 'bikeshop', params: {name: bikestore.name, storeid: bikestore.id}}">
 
     <div class="container">
       <p class="name">{{ bikestore.name }}</p> 
       <p class="desc">{{ bikestore.description }}</p>
+      <p> {{  bikestore.id }}</p>
     </div>
   </RouterLink>
   </div>
